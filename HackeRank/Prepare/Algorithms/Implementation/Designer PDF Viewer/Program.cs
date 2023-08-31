@@ -3,31 +3,74 @@
 using System;
 using System.Collections.Generic;
 
-List<int> h = new List<int>();
-Console.WriteLine("Enter number of heights- then enter the word beneath: ");
+List<int> letterHeights = new List<int>();
 
-string[] hItems = Console.ReadLine().Trim().Split(' ');  
+        Console.WriteLine("Enter the heights of each lowercase English letter (a-z), separated by spaces:");
+        string heightsInput = Console.ReadLine();
+        string[] heights = heightsInput.Split(' ');
 
-foreach(string hItem in hItems)
-{
-    h.Add(Convert.ToInt32(hItem));
-}
+        foreach (string height in heights)
+        {
+            int heightValue = Convert.ToInt32(height);
+            letterHeights.Add(heightValue);
+        } 
 
-    string word = Console.ReadLine();
+        Console.WriteLine("Enter a word consisting of lowercase English alphabetic letters:");
+        string word = Console.ReadLine();
 
-    int result = DesignerPdfViewer(h, word);
+        int area = DesignerPdfViewer(letterHeights, word);
+        Console.WriteLine("The highlighted area is: " + area);
 
-    Console.WriteLine(result);
-
-static int DesignerPdfViewer(List<int> h, string word)
+static int DesignerPdfViewer(List<int> letterHeights, string word)
 {
     int maxHeight = 0;
 
-    foreach(char c in word)
+    foreach (char c in word)
     {
         int index = c - 'a';
-        maxHeight = Math.Max(maxHeight, h[index]);
+        maxHeight = Math.Max(maxHeight, letterHeights[index]);
     }
 
     return maxHeight * word.Length;
 }
+
+
+// using System;
+// using System.Collections.Generic;
+
+// class Solution
+// {
+//     public static int DesignerPdfViewer(List<int> letterHeights, string word)
+//     {
+//         int maxHeight = 0;
+
+//         foreach (char c in word)
+//         {
+//             int index = c - 'a';
+//             maxHeight = Math.Max(maxHeight, letterHeights[index]);
+//         }
+
+//         return maxHeight * word.Length;
+//     }
+
+//     public static void Main(string[] args)
+//     {
+//         List<int> letterHeights = new List<int>();
+
+//         Console.WriteLine("Enter the heights of each lowercase English letter (a-z), separated by spaces:");
+//         string heightsInput = Console.ReadLine();
+//         string[] heights = heightsInput.Split(' ');
+
+//         foreach (string height in heights)
+//         {
+//             int heightValue = Convert.ToInt32(height);
+//             letterHeights.Add(heightValue);
+//         }
+
+//         Console.WriteLine("Enter a word consisting of lowercase English alphabetic letters:");
+//         string word = Console.ReadLine();
+
+//         int area = DesignerPdfViewer(letterHeights, word);
+//         Console.WriteLine("The highlighted area is: " + area);
+//     }
+// }
