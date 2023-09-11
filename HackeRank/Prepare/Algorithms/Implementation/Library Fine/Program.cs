@@ -36,20 +36,23 @@ else
 
 static int LibraryFine(int day1, int month1, int year1, int day2, int month2, int year2)
 {
-        if (year1 < year2 || (year1 == year2 && month1 < month2) || (year1 == year2 && month1 == month2 && day1 <= day2))
-        {
-            return 0;
-        }
-        else if (year1 == year2 && month1 == month2)
-        {
-            return 15 * (day1 - day2);
-        }
-        else if (year1 == year2 && month1 > month2)
-        {
-            return 500 * (month1 - month2);
-        }
-        else
-        {
-            return 10000;
-        }
+    if (year1 < year2 || (year1 == year2 && month1 < month2) || (year1 == year2 && month1 == month2 && day1 <= day2))
+    {
+        return 0;
+    }
+
+    else if (year1 == year2 && month1 == month2)
+    {
+        return 15 * (day1 - day2);
+    }
+        
+    else if (year1 == year2 && month1 > month2)
+    {
+        return 500 * (month1 - month2);
+    }
+
+    else
+    {
+        return 10000;
+    }
 }
